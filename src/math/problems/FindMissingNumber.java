@@ -10,6 +10,16 @@ public class FindMissingNumber {
          Write a method to find the missing number from the array.
          */
         int[] array = new int[] {10, 2, 1, 4, 5, 3, 7, 8, 6};
+        int sum1 = 0;
 
+        for (int i = 1; i <= 10; i++) {
+            sum1 = sum1 + i;
+        }
+        int sum2 = 0;
+        for (int i = 0; i < array.length; i++) {
+            sum2 = sum2 + array[i];
+        }
+        System.out.println("The missing number is" + " " + (sum1 - sum2));
     }
-}
+    }
+

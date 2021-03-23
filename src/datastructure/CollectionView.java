@@ -17,7 +17,8 @@ public class CollectionView {
         map.put(4, "Boston");
         map.put(5, "San Jose");
         map.put(6, "Seattle");
-
+        map.forEach((k, v) -> System.out.println("Key = "
+                + k + ", Value = "+ v));
     }
 
 }

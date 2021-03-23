@@ -2,7 +2,7 @@ package design;
 
 import java.util.Scanner;
 
-public class EmployeeInfo {
+public class EmployeeInfo extends AbstractClass implements Employee {
 
     /*
     This class should implement the Employee interface. You can do that by directly implementing it, however you must
@@ -19,8 +19,47 @@ public class EmployeeInfo {
 
     /*
      * Make sure to declare and use static, non-static & final fields
+     *
      */
+
+    @Override
+    public int employeeId() {
+        return 0;
+    }
+
+    @Override
+    public String employeeName() {
+        return null;
+    }
+
+    @Override
+    public void assignDepartment() {
+
+    }
+
+    @Override
+    public int calculateSalary() {
+        return 0;
+    }
+
+    @Override
+    public void benefitLayout() {
+
+    }
+
     static String companyName;
+    private int employeeId;
+    private String name;
+    static  int salary = 10000;
+    static int performance;
+    public static String getCompanyName() {
+        return companyName;
+    }
+
+    public static void setCompanyName(String companyName) {
+        EmployeeInfo.companyName = companyName;
+    }
+
 
     /*
      You must implement the logic for below 2 methods and
@@ -32,10 +71,13 @@ public class EmployeeInfo {
      You must have/use multiple constructors
      */
     public EmployeeInfo(int employeeId) {
+        this.employeeId=employeeId;
 
     }
 
     public EmployeeInfo(String name, int employeeId) {
+        this.name=name;
+        this.employeeId=employeeId;
 
     }
 
@@ -48,9 +90,31 @@ public class EmployeeInfo {
      *
      */
     public static int calculateEmployeeBonus(int numberOfYearsWithCompany) {
-        int total = 0;
-        return total;
+        double total=0;
+        double bonus;
+
+        if(performance >= 8){
+            bonus = salary * .1;
+            System.out.println("Employees bonus best performance = $"+bonus);
+
+            if (numberOfYearsWithCompany >= 5){
+                total = salary + bonus;
+            }
+            System.out.println("total with best performance is: "+total);
+
+        }else{
+            bonus = salary*.08;
+            System.out.println("Employees bonus average performance = $"+bonus);}
+
+        if (numberOfYearsWithCompany < 5){
+            total = salary + bonus;
+        }
+        System.out.println(" total with average performance is: "+total);
+
+        return (int) total;
     }
+
+
 
     /*
      You need to implement the logic of this method as such:
@@ -61,6 +125,7 @@ public class EmployeeInfo {
      */
     public static int calculateEmployeePension() {
         int total = 0;
+        double totalPension ;
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter start date in format (example: May,2015): ");
         String joiningDate = sc.nextLine();
@@ -71,11 +136,26 @@ public class EmployeeInfo {
 
         // Figure out how to extract the number of years the employee has been with the company, using the above 2 dates
         // Calculate pension
+        int StartingDate=2017;
+        int CurrentDate=2019;
+        if (CurrentDate-StartingDate==1){
+            totalPension = salary * .05;
 
+
+        }else if (CurrentDate - StartingDate >= 2 ){
+            totalPension = salary * .1;
+
+        }else totalPension =0;
+
+
+        System.out.println("this is pension total salary"+totalPension);
         return total;
     }
 
+
+
     private static class DateConversion {
+
 
         public DateConversion(Months months) {
         }
